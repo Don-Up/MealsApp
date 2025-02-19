@@ -1,8 +1,13 @@
 import classes from "./page.module.css"
 import Link from "next/link";
 import MealsGrid from "@/components/meals";
+import {getMeals} from "../../../lib/meals";
+import {MealItemProps} from "@/components/meals/item";
 
-export default function MealsPage() {
+export default async function MealsPage() {
+
+    const meals: MealItemProps[] = await getMeals()
+
     return <>
         <header className={classes.header}>
             <h1>
@@ -16,7 +21,7 @@ export default function MealsPage() {
             </p>
         </header>
         <main className={classes.main}>
-            <MealsGrid meals={[]}/>
+            {meals && <MealsGrid meals={meals}/>}
         </main>
     </>
 

@@ -12,12 +12,15 @@ export interface MealItemProps {
 }
 
 export default function MealItem({ title, slug, image, summary, creator }: MealItemProps) {
+    const imagePath = require(`@/assets/${image}`).default;
+
     return (
         <article className={classes.meal}>
             <header>
                 <div className={classes.image}>
                     <Image
-                        src={`https://maxschwarzmueller-nextjs-demo-users-image.s3.amazonaws.com/${image}`}
+                        // src={`https://maxschwarzmueller-nextjs-demo-users-image.s3.amazonaws.com/${image}`}
+                        src={imagePath}
                         alt={title}
                         fill
                     />

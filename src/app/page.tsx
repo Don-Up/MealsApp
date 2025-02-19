@@ -3,7 +3,6 @@ import styles from "./page.module.css";
 import ImageSlideshow from "@/components/images";
 
 export default function Home() {
-    console.log('Home')
     return (
         <>
             <header className={styles.header}>
