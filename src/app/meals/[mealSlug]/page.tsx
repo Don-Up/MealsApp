@@ -2,6 +2,7 @@ import classes from "./page.module.css"
 import Image from "next/image";
 import {getMeal} from "@/lib/meals";
 import {MealItemProps} from "@/components/meals/item";
+import {notFound} from "next/navigation";
 
 interface Params {
     params: {
@@ -12,6 +13,11 @@ interface Params {
 export default function MealsDetailsPage({params}: Params){
 
     const meal: MealItemProps = getMeal(params.mealSlug)
+
+    if(!meal){
+        notFound()
+    }
+
     const imagePath = require(`@/assets/${meal.image}`).default;
 
     meal.instructions = meal.instructions.replace(/\n/g, '<br/>')
