@@ -9,6 +9,8 @@ export interface MealItemProps {
     image: string;
     summary: string;
     creator: string;
+    creator_email: string
+    instructions: string
 }
 
 export default function MealItem({ title, slug, image, summary, creator }: MealItemProps) {

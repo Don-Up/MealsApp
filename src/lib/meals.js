@@ -29,4 +29,15 @@ export async function getMeals(timeout = 2000) {
     }
 }
 
+export function getMeal(slug) {
+    try {
+        // Execute the database query
+        const result = db.prepare("SELECT * FROM meals WHERE slug = ?").get(slug);
+        return result;
+    } catch (error) {
+        console.error("Error fetching meals:", error);
+        throw error; // Re-throw the error after logging
+    }
+}
+
 
