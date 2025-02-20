@@ -14,8 +14,7 @@ export interface MealItemProps {
 }
 
 export default function MealItem({ title, slug, image, summary, creator }: MealItemProps) {
-    const imagePath = require(`@/assets/${image}`).default;
-
+    const imagePath = image.startsWith("/images/")? image : require(`@/assets/${image}`).default;
     return (
         <article className={classes.meal}>
             <header>
