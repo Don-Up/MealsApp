@@ -2,6 +2,7 @@
 
 import {saveMeal} from './meals';
 import {redirect} from "next/navigation";
+import {revalidatePath} from "next/cache";
 
 function isInvalidText(text: any | null) {
     return !text || text.trim() === '';
@@ -53,6 +54,8 @@ export async function shareMeal(prevState: { message: string }, formData: FormDa
 
     // Save the meal information
     await saveMeal(meal);
+    // Revalidate the cache for the "/meals" page
+    revalidatePath('/meals')
     // Redirect to the meal list page after saving
     redirect("/meals");
 }

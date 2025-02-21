@@ -7,7 +7,8 @@ import ImagePicker from "@/components/image-picker";
 import {useActionState} from "react";
 
 export default function ShareMealPage() {
-    const [state, formAction] = useActionState(shareMeal, { message: '' }); // 初始值为空字符串
+
+    const [state, formAction] = useActionState(shareMeal, { message: '' });
 
     return (
         <>
