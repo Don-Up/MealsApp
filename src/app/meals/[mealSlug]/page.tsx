@@ -10,6 +10,19 @@ interface Params {
     }
 }
 
+export async function generateMetadata({params}: Params){
+    const meal = getMeal(params.mealSlug)
+
+    if(!meal){
+        notFound()
+    }
+
+    return {
+        title: meal.title,
+        description: meal.summary
+    }
+}
+
 export default function MealsDetailsPage({params}: Params){
 
     const meal: MealItemProps = getMeal(params.mealSlug)
